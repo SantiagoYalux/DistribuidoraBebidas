@@ -171,21 +171,26 @@ namespace DistribuidoraBebidas
             // totalPagar
             // 
             this.totalPagar.AutoSize = true;
-            this.totalPagar.BackColor = System.Drawing.Color.DodgerBlue;
-            this.totalPagar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.totalPagar.BackColor = System.Drawing.Color.Transparent;
+            this.totalPagar.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.totalPagar.Location = new System.Drawing.Point(261, 483);
             this.totalPagar.Name = "totalPagar";
-            this.totalPagar.Size = new System.Drawing.Size(0, 28);
+            this.totalPagar.Size = new System.Drawing.Size(0, 31);
             this.totalPagar.TabIndex = 5;
             // 
             // AgregarBebida
             // 
-            this.AgregarBebida.Location = new System.Drawing.Point(673, 12);
+            this.AgregarBebida.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.AgregarBebida.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.AgregarBebida.FlatAppearance.BorderSize = 2;
+            this.AgregarBebida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AgregarBebida.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AgregarBebida.Location = new System.Drawing.Point(618, 16);
             this.AgregarBebida.Name = "AgregarBebida";
-            this.AgregarBebida.Size = new System.Drawing.Size(75, 23);
+            this.AgregarBebida.Size = new System.Drawing.Size(130, 30);
             this.AgregarBebida.TabIndex = 6;
             this.AgregarBebida.Text = "Agregar Bebida";
-            this.AgregarBebida.UseVisualStyleBackColor = true;
+            this.AgregarBebida.UseVisualStyleBackColor = false;
             this.AgregarBebida.Click += new System.EventHandler(this.AgregarBebida_Click);
             // 
             // dollar

@@ -29,11 +29,6 @@ namespace DistribuidoraBebidas
         List<Bebida> BebidasAcomprar = new List<Bebida>();
 
 
-
-
-
-
-
         public Form1()
         {
             InitializeComponent();
@@ -55,7 +50,21 @@ namespace DistribuidoraBebidas
         {
             DateTime date1 = DateTime.Now;
             Hora.Text = date1.ToString();
-        }
+
+            foreach (Bebida bebida in TodasBebidasBD)
+            {
+                if (bebida.Cantidad == 0)
+                {
+                    bebida.miBton.Enabled = false;
+                    bebida.miBton.Text = "NO STOCK";
+                    bebida.miBton.BackColor = Color.DarkGray;
+                    bebida.miBton.ForeColor = Color.White;
+
+
+                }
+            }
+
+            }
 
 
         //Obtenemos las bebidas desde base de datos
@@ -146,8 +155,10 @@ namespace DistribuidoraBebidas
 
         private void AgregarBebida_Click(object sender, EventArgs e)
         {
-            Bebida bebida = new Bebida("JackDaniels", 150, 2, 500, button25_Click);
-            PanelBebidas.Controls.Add(bebida.miBton);
+            AgregarBebida AgregarBebidaForm = new AgregarBebida();
+            AgregarBebidaForm.Show();
+            this.Hide();
+           
         }
 
 

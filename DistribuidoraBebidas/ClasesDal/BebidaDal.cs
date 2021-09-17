@@ -38,7 +38,7 @@ namespace DistribuidoraBebidas.ClasesDal
             }
             catch (Exception e)
             {
-                MessageBox.Show("Algo salio mal");
+                MessageBox.Show("Algo salio mal", e.Message);
                 return bebidas;
                 
             }
@@ -87,5 +87,29 @@ namespace DistribuidoraBebidas.ClasesDal
                 MessageBox.Show(e.Message.ToString());
             }
         }
+
+        public void AgregarBebida(string Nombre, int Cantidad, int Mililitros, float Precio)
+        {
+            string Comando = $"INSERT into Bebidas (Nombre, Cantidad, Mililitros, Precio) VALUES ('{Nombre}', {Cantidad}, {Mililitros}, {Precio})";
+            try
+            {
+                using(SqlConnection miConexion = new SqlConnection("DATA SOURCE = DESKTOP-SNLMS6S\\PRIMERAGESTION; INITIAL CATALOG = dbDistribuidora; Integrated Security = True"))
+                {
+                    miConexion.Open();
+
+                    using (SqlCommand miComando = new SqlCommand(Comando, miConexion))
+                    {
+                        miComando.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        
     }
 }
