@@ -32,6 +32,7 @@ namespace DistribuidoraBebidas
         public Form1()
         {
             InitializeComponent();
+            BebidasAcomprar.Clear();
 
             obtenerBebidas();
 
@@ -155,7 +156,7 @@ namespace DistribuidoraBebidas
 
         private void AgregarBebida_Click(object sender, EventArgs e)
         {
-            AgregarBebida AgregarBebidaForm = new AgregarBebida();
+            AgregarBebida AgregarBebidaForm = new AgregarBebida(BebidasAcomprar, TodasBebidasBD);
             AgregarBebidaForm.Show();
             this.Hide();
            
@@ -168,6 +169,14 @@ namespace DistribuidoraBebidas
             Carrito CarritoForm = new Carrito(BebidasAcomprar); //le pasamos por parametro el carrito hasta el momento
             CarritoForm.Show();
             this.Hide();
+        }
+
+        private void RegistrosBtn_Click(object sender, EventArgs e)
+        {
+            RegistroVentas RegistroVentasFormulario = new RegistroVentas(BebidasAcomprar);
+            RegistroVentasFormulario.Show();
+            this.Hide();
+            
         }
     }
 

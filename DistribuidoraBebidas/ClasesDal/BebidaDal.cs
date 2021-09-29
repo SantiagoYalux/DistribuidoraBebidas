@@ -10,9 +10,11 @@ using DistribuidoraBebidas.Clases;
 namespace DistribuidoraBebidas.ClasesDal
 {
     class BebidaDal
-    {        
+    {
+        Conexion miConexionBaseDatos = new Conexion();
+        string cadenaConexion = "DATA SOURCE = DESKTOP-SNLMS6S\\PRIMERAGESTION; INITIAL CATALOG = dbDistribuidora; Integrated Security = True";
 
-       public List<Bebida> ObtenerBebidas(EventHandler eventoBotones, List<Bebida> bebidas)
+       public List<Bebida> ObtenerBebidas(EventHandler eventoBotones , List<Bebida> bebidas)
         {
             
             try
@@ -45,69 +47,33 @@ namespace DistribuidoraBebidas.ClasesDal
             
         }
 
+
+
+
+        //ESTO LO USAREMOS CUANDO EL CLIENTE ELIGE UNA BEBIDA, EL STOCK EN LA BASE DE DATOS DE LA BEBIDA ELEGIDA DEBE DISMINUIR EN 1
         public void disminuirCantidadBebida(String Nombre)
         {
             string consulta = $"UPDATE Bebidas SET Cantidad = Cantidad - 1 where Nombre = '{Nombre}';";
-            try
-            {
-                using(SqlConnection miConexion = new SqlConnection("DATA SOURCE = DESKTOP-SNLMS6S\\PRIMERAGESTION; INITIAL CATALOG = dbDistribuidora; Integrated Security = True"))
-                {
-                    miConexion.Open();
-                    using (SqlCommand miComando = new SqlCommand(consulta, miConexion))
-                    {
-                        miComando.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
 
-                MessageBox.Show(e.Message.ToString());
-            }
+            miConexionBaseDatos.Consultar(consulta, cadenaConexion);
         }
 
-        //ESTO LO USAREMOS CUANDO EL EMPLEADO ELIMINE DE LA LISTA ALGUNA BEBIDA
+
+
+        //ESTO LO USAREMOS CUANDO EL EMPLEADO ELIMINE DE LA LISTA ALGUNA BEBIDA, EL STOCK EN LA BASE DE DATOS DEBE AUMENTAR EN 1
         public void aumentarCantidadBebidad(string Nombre)
         {
             string consulta = $"UPDATE Bebidas SET Cantidad = Cantidad + 1 where Nombre = '{Nombre}';";
-            try
-            {
-                using (SqlConnection miConexion = new SqlConnection("DATA SOURCE = DESKTOP-SNLMS6S\\PRIMERAGESTION; INITIAL CATALOG = dbDistribuidora; Integrated Security = True"))
-                {
-                    miConexion.Open();
-                    using (SqlCommand miComando = new SqlCommand(consulta, miConexion))
-                    {
-                        miComando.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
 
-                MessageBox.Show(e.Message.ToString());
-            }
+            miConexionBaseDatos.Consultar(consulta, cadenaConexion);
         }
 
+        //EL EMPLEADO AGREGA BEBIDAS DESDE EL FORMULARIO
         public void AgregarBebida(string Nombre, int Cantidad, int Mililitros, float Precio)
         {
-            string Comando = $"INSERT into Bebidas (Nombre, Cantidad, Mililitros, Precio) VALUES ('{Nombre}', {Cantidad}, {Mililitros}, {Precio})";
-            try
-            {
-                using(SqlConnection miConexion = new SqlConnection("DATA SOURCE = DESKTOP-SNLMS6S\\PRIMERAGESTION; INITIAL CATALOG = dbDistribuidora; Integrated Security = True"))
-                {
-                    miConexion.Open();
+            string consulta = $"INSERT into Bebidas (Nombre, Cantidad, Mililitros, Precio) VALUES ('{Nombre}', {Cantidad}, {Mililitros}, {Precio})";
 
-                    using (SqlCommand miComando = new SqlCommand(Comando, miConexion))
-                    {
-                        miComando.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-
-                MessageBox.Show(e.Message);
-            }
+            miConexionBaseDatos.Consultar(consulta, cadenaConexion);
         }
 
         

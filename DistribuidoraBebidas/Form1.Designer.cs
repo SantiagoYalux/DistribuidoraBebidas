@@ -31,7 +31,6 @@ namespace DistribuidoraBebidas
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Hora = new System.Windows.Forms.Label();
             this.PanelBebidas = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,13 +54,13 @@ namespace DistribuidoraBebidas
             // Hora
             // 
             this.Hora.AutoSize = true;
-            this.Hora.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Hora.BackColor = System.Drawing.Color.White;
             this.Hora.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Hora.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Hora.Location = new System.Drawing.Point(233, 16);
+            this.Hora.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Hora.Location = new System.Drawing.Point(222, 16);
             this.Hora.Name = "Hora";
             this.Hora.Padding = new System.Windows.Forms.Padding(4);
-            this.Hora.Size = new System.Drawing.Size(60, 30);
+            this.Hora.Size = new System.Drawing.Size(62, 31);
             this.Hora.TabIndex = 1;
             this.Hora.Text = "label1";
             // 
@@ -71,10 +70,11 @@ namespace DistribuidoraBebidas
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelBebidas.AutoScroll = true;
-            this.PanelBebidas.BackColor = System.Drawing.Color.CadetBlue;
-            this.PanelBebidas.Location = new System.Drawing.Point(249, 62);
+            this.PanelBebidas.BackColor = System.Drawing.Color.Azure;
+            this.PanelBebidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelBebidas.Location = new System.Drawing.Point(249, 63);
             this.PanelBebidas.Name = "PanelBebidas";
-            this.PanelBebidas.Size = new System.Drawing.Size(451, 378);
+            this.PanelBebidas.Size = new System.Drawing.Size(450, 400);
             this.PanelBebidas.TabIndex = 2;
             // 
             // panel1
@@ -137,6 +137,7 @@ namespace DistribuidoraBebidas
             this.RegistrosBtn.TabIndex = 4;
             this.RegistrosBtn.Text = "Registro Ventas";
             this.RegistrosBtn.UseVisualStyleBackColor = false;
+            this.RegistrosBtn.Click += new System.EventHandler(this.RegistrosBtn_Click);
             // 
             // bebidasBtn
             // 
@@ -170,22 +171,28 @@ namespace DistribuidoraBebidas
             // 
             // totalPagar
             // 
+            this.totalPagar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.totalPagar.AutoSize = true;
-            this.totalPagar.BackColor = System.Drawing.Color.Transparent;
+            this.totalPagar.BackColor = System.Drawing.Color.White;
+            this.totalPagar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.totalPagar.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.totalPagar.Location = new System.Drawing.Point(261, 483);
             this.totalPagar.Name = "totalPagar";
-            this.totalPagar.Size = new System.Drawing.Size(0, 31);
+            this.totalPagar.Size = new System.Drawing.Size(57, 33);
             this.totalPagar.TabIndex = 5;
+            this.totalPagar.Text = "0.00";
             // 
             // AgregarBebida
             // 
-            this.AgregarBebida.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.AgregarBebida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.AgregarBebida.BackColor = System.Drawing.Color.White;
             this.AgregarBebida.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AgregarBebida.FlatAppearance.BorderSize = 2;
-            this.AgregarBebida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AgregarBebida.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AgregarBebida.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AgregarBebida.Location = new System.Drawing.Point(618, 16);
+            this.AgregarBebida.ForeColor = System.Drawing.Color.Black;
+            this.AgregarBebida.Location = new System.Drawing.Point(634, 16);
             this.AgregarBebida.Name = "AgregarBebida";
             this.AgregarBebida.Size = new System.Drawing.Size(130, 30);
             this.AgregarBebida.TabIndex = 6;
@@ -195,9 +202,11 @@ namespace DistribuidoraBebidas
             // 
             // dollar
             // 
+            this.dollar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dollar.AutoSize = true;
             this.dollar.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dollar.Location = new System.Drawing.Point(233, 483);
+            this.dollar.Location = new System.Drawing.Point(222, 483);
             this.dollar.Name = "dollar";
             this.dollar.Size = new System.Drawing.Size(23, 28);
             this.dollar.TabIndex = 5;
@@ -208,7 +217,7 @@ namespace DistribuidoraBebidas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PowderBlue;
-            this.ClientSize = new System.Drawing.Size(760, 530);
+            this.ClientSize = new System.Drawing.Size(774, 530);
             this.Controls.Add(this.AgregarBebida);
             this.Controls.Add(this.dollar);
             this.Controls.Add(this.totalPagar);
@@ -227,7 +236,6 @@ namespace DistribuidoraBebidas
         }
 
         #endregion
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label Hora;
         private System.Windows.Forms.FlowLayoutPanel PanelBebidas;

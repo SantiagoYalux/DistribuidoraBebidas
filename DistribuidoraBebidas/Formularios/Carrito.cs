@@ -19,6 +19,9 @@ namespace DistribuidoraBebidas.Formularios
 
         BebidaDal bebidaBD = new BebidaDal();
         List<Bebida> BebidasEnCarrito = new List<Bebida>();
+        IList<Compra> ComprasHistorias = new List<Compra>();
+
+        float suma = 0;
         
         int indice = 0;
 
@@ -54,34 +57,19 @@ namespace DistribuidoraBebidas.Formularios
             dgvCarritoCliente.Rows[n].Cells[1].Value = bebidas.Precio;
         }
 
-        #region Imprimir Ticket
+
 
         private void imprimirBtn_Click(object sender, EventArgs e)
         {
-            printDocument1 = new PrintDocument();
-            PrinterSettings ps = new PrinterSettings();
-            printDocument1.PrinterSettings = ps;
+            CompletarPago CompletarPagoForm = new CompletarPago(BebidasEnCarrito);
+            CompletarPagoForm.Show();
+            this.Hide();
 
-            printDocument1.PrintPage += Imprimir;
-            printDocument1.Print();
-        }
-
-        private void Imprimir(object sender, PrintPageEventArgs e)
-        {
-            Font font = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
-
-            int width = 200;
-            int y = 20;
-
-            e.Graphics.DrawString(Hora.Text.ToString(), font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-            e.Graphics.DrawString("Un ticket Feliz 2", font, Brushes.Black, new RectangleF(0, y += 20, width, 20));
-
-            Image imagen = Image.FromFile(ruta);
-            e.Graphics.DrawImage(imagen, new Rectangle(0, y += 20, 50, 100));
+            
+            
 
         }
 
-        #endregion
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -123,6 +111,11 @@ namespace DistribuidoraBebidas.Formularios
             Form1 formularioPrincipal = new Form1(BebidasEnCarrito);
             formularioPrincipal.Show();
             this.Hide();
+
+        }
+
+        private void dgvCarritoCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
